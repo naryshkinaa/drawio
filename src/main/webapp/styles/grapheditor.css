@@ -2121,3 +2121,5 @@ table.geProperties tr td {
     transform: translate(0, 0);
     z-index: 0;
 }
+.geMenubar .geStatusAlert{display: none!important}
+a[title=Свернуть/Развернуть]{display: none!important}
