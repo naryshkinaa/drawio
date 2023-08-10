@@ -296,6 +296,7 @@
 			(function()
 			{
 				var hostName = window.location.hostname;
+				var version	= window.parent.version!=null?".ver"+window.parent.version:""
 				
 				// Supported domains are *.draw.io and the packaged version in Quip
 				var supportedDomain = (hostName.substring(hostName.length - 8, hostName.length) === '.draw.io') ||
@@ -303,7 +304,7 @@
 				
 				function loadAppJS()
 				{
-					mxscript('js/app.min.js', function()
+					mxscript('js/app.min'+version+'.js', function()
 					{
 						mxScriptsLoaded = true;
 						checkAllLoaded();
@@ -311,17 +312,17 @@
 						// Electron
 						if (mxIsElectron)
 						{
-							mxscript('js/diagramly/DesktopLibrary.js', function()
+							mxscript('js/diagramly/DesktopLibrary'+version+'.js', function()
 							{
-								mxscript('js/diagramly/ElectronApp.js', function()
+								mxscript('js/diagramly/ElectronApp'+version+'.js', function()
 								{
-									mxscript('js/extensions.min.js', function()
+									mxscript('js/extensions.min'+version+'.js', function()
 									{
-										mxscript('js/stencils.min.js', function()
+										mxscript('js/stencils.min'+version+'.js', function()
 										{
-											mxscript('js/shapes-14-6-5.min.js', function()
+											mxscript('js/shapes-14-6-5.min'+version+'.js', function()
 											{
-												mxscript('js/PostConfig.js');
+												mxscript('js/PostConfig'+version+'.js');
 											});
 										});
 									});
@@ -330,7 +331,7 @@
 						}
 						else if (!supportedDomain)
 						{
-							mxscript('js/PostConfig.js');
+							mxscript('js/PostConfig'+version+'.js');
 						}
 					});
 				};
@@ -437,7 +438,7 @@
 <body class="geEditor">
 <div id="geInfo">
 	<div class="geBlock">
-		<h1>Редактор диаграмм на основе Draw.io</h1>
+		<h1>Редактор диаграмм</h1>
 		<p>
 			.
 		</p>
